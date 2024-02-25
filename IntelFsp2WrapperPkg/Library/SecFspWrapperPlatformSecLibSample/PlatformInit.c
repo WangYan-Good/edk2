@@ -20,9 +20,9 @@
 VOID
 EFIAPI
 PlatformInit (
-  IN VOID  *FspHobList,
-  IN VOID  *StartOfRange,
-  IN VOID  *EndOfRange
+  IN VOID  *FspHobList,      // [esp+4] -> EAX
+  IN VOID  *StartOfRange,    // [esp+8] -> ECX
+  IN VOID  *EndOfRange       // [esp+0xC] -> EDX
   )
 {
   //

@@ -18,10 +18,35 @@ SECTION .text
 extern ASM_PFX(SecStartup)
 extern ASM_PFX(PlatformInit)
 
+; wangyan comments:
+; ESP: External Stack Pointer, 32-bit 栈顶指针
+; 栈的增长方向是向下的，即小地址 -> 大地址
+; 其中，最大地址为栈底，最小地址为栈顶
+; 栈的特性：先进后出
+;
+; 0xFFFF|-------------------|----> 栈底
+;       |                   |
+;       |      Stack        |
+; 0x0000|-------------------|----> 栈顶
+;
 global ASM_PFX(CallPeiCoreEntryPoint)
 ASM_PFX(CallPeiCoreEntryPoint):
   ;
   ; Obtain the hob list pointer
+  ;
+  ; wangyan comments:
+  ; 将当前栈顶指针的地址往后偏移 4*32 位, 取到 HOB list 的指针地址
+  ; 将 HOB list 指针地址送入 EAX 通用寄存器中
+  ;
+  ; 
+  ; 0xFFFFFFFF|----------------------|----> [ESP + 0xC]
+  ;           |                      |
+  ;           |       Stack          |
+  ;       X+4 | HOB list pointer Add |<------>
+  ;           |                      | 4 Byte = 32 bit
+  ;         X |                      |<----- ESP
+  ;           ~                      ~
+  ; 0x00000000|----------------------|----> [ESP + 8]
   ;
   mov     eax, [esp+4]
   ;
