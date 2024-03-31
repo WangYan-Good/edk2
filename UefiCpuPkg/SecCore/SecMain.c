@@ -296,6 +296,10 @@ SecStartup (
     EFI_SOFTWARE_SEC | EFI_SW_SEC_PC_ENTRY_POINT
     );
 
+  //
+  // wangyan comments - log instance:
+  // SecStartup() TempRAM Base: 0xFE800000, TempRAM Size: 0x1FFF00, BootFirmwareVolume 0xFFE49000
+  //
   DEBUG ((
     DEBUG_INFO,
     "%a() TempRAM Base: 0x%x, TempRAM Size: 0x%x, BootFirmwareVolume 0x%x\n",
@@ -368,6 +372,10 @@ SecStartup (
   SecCoreData.StackBase              = (VOID *)(UINTN)(TempRamBase + SecCoreData.PeiTemporaryRamSize);
   SecCoreData.StackSize              = PeiStackSize;
 
+  //
+  // wangyan comments - log instance:
+  // SecStartup() BFV Base: 0xFFE49000, BFV Size: 0x1B7000, TempRAM Base: 0xFE800000, TempRAM Size: 0x1FFF00, PeiTempRamBase: 0xFE800000, PeiTempRamSize: 0x1EFF00, StackBase: 0xFE9EFF00, StackSize: 0x10000
+  //
   DEBUG ((
     DEBUG_INFO,
     "%a() BFV Base: 0x%x, BFV Size: 0x%x, TempRAM Base: 0x%x, TempRAM Size: 0x%x, PeiTempRamBase: 0x%x, PeiTempRamSize: 0x%x, StackBase: 0x%x, StackSize: 0x%x\n",
@@ -471,6 +479,10 @@ SecStartupPhase2 (
     }
   }
 
+  //
+  // wangyan comments - log instance:
+  // SecStartupPhase2() PeiCoreEntryPoint: 0xFFEAF343
+  //
   DEBUG ((
     DEBUG_INFO,
     "%a() PeiCoreEntryPoint: 0x%x\n",
@@ -520,6 +532,11 @@ SecStartupPhase2 (
     //
     SecCoreData->PeiTemporaryRamBase  = (VOID *)(((UINTN)SecCoreData->PeiTemporaryRamBase + 7) & ~0x07);
     SecCoreData->PeiTemporaryRamSize &= ~(UINTN)0x07;
+
+    //
+    // wangyan comments - log instance:
+    // SecStartupPhase2() PeiTemporaryRamBase: 0xFE942040, PeiTemporaryRamSize: 0xADEC0
+    //
     DEBUG ((
       DEBUG_INFO,
       "%a() PeiTemporaryRamBase: 0x%x, PeiTemporaryRamSize: 0x%x\n",
@@ -534,6 +551,10 @@ SecStartupPhase2 (
     PpiList = &mPeiSecPlatformInformationPpi[0];
   }
 
+  //
+  // wangyan comments - log instance:
+  // SecStartupPhase2() Stack Base: 0xFE9EFF00, Stack Size: 0x10000
+  //
   DEBUG ((
     DEBUG_INFO,
     "%a() Stack Base: 0x%p, Stack Size: 0x%x\n",

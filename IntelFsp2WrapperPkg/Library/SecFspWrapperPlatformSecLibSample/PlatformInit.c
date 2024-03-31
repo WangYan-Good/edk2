@@ -31,6 +31,12 @@ PlatformInit (
   //
   SerialPortInitialize ();
 
+  //
+  // wangyan comments - log instance:
+  // FspHobList - 0x0
+  // StartOfRange - 0xFE800000
+  // EndOfRange - 0xFE9FFF00
+  //
   DEBUG ((DEBUG_INFO, "PrintPeiCoreEntryPointParam in PlatformInit\n"));
   DEBUG ((DEBUG_INFO, "FspHobList - 0x%x\n", FspHobList));
   DEBUG ((DEBUG_INFO, "StartOfRange - 0x%x\n", StartOfRange));

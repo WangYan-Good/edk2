@@ -365,7 +365,11 @@ HandOffToDxeCore (
     SaveAndSetDebugTimerInterrupt (FALSE);
 
     AsmWriteIdtr (&gLidtDescriptor);
-
+    
+    //
+    // wangyan comments - Log instance:
+    // HandOffToDxeCore() Stack Base: 0x699BC000, Stack Size: 0x20000
+    //
     DEBUG ((
       DEBUG_INFO,
       "%a() Stack Base: 0x%lx, Stack Size: 0x%x\n",

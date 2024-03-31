@@ -100,6 +100,20 @@ SecPlatformMain (
 {
   EFI_PEI_PPI_DESCRIPTOR  *PpiList;
 
+  //
+  // wangyan comments - log instance:
+  //
+  // BootFirmwareVolumeBase - 0xFFE49000
+  // BootFirmwareVolumeSize - 0x1B7000
+  // TemporaryRamBase       - 0xFE800000
+  // TemporaryRamSize       - 0x1FFF00
+  // PeiTemporaryRamBase    - 0xFE942000
+  // PeiTemporaryRamSize    - 0xADF00
+  // StackBase              - 0xFE9EFF00
+  // StackSize              - 0x10000
+  //
+  //
+
   DEBUG ((DEBUG_INFO, "SecPlatformMain\n"));
 
   DEBUG ((DEBUG_INFO, "BootFirmwareVolumeBase - 0x%x\n", SecCoreData->BootFirmwareVolumeBase));
